@@ -29,6 +29,7 @@ interface HeroBannerProps {
   onWatchVideo: () => void;
   onStartQuiz: () => void;
   onOpenArticleByNumber?: (num: number) => void;
+  onSelectRole?: (roleId: 'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie') => void;
 }
 
 export const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -39,6 +40,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onWatchVideo,
   onStartQuiz,
   onOpenArticleByNumber,
+  onSelectRole,
 }) => {
   return (
     <section id="overview" className="relative pt-24 sm:pt-28 pb-10 overflow-hidden">
@@ -63,14 +65,15 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">DOL-HR-001 v1.0</span>
               </div>
 
-              {/* Main Headline - Perfectly Balanced Typography */}
-              <div className="space-y-1 sm:space-y-2">
-                <h1 className="font-oswald text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight text-slate-900 dark:text-white leading-[1.2] uppercase">
-                  ĐI LÀM VUI VẺ — VỮNG VÀNG ĐỨNG QUẦY
+              {/* Main Headline - Bulletproof 2-Tier Balanced Typography */}
+              <div className="space-y-1.5 sm:space-y-2">
+                <h1 className="font-oswald text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12] uppercase">
+                  <span className="block">ĐI LÀM VUI VẺ —</span>
+                  <span className="block text-[#2076bd] dark:text-blue-400">AN TÂM ĐỨNG QUẦY</span>
                 </h1>
-                <h2 className="font-oswald text-xl sm:text-2xl lg:text-[32px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#2076bd] via-[#165b94] to-cyan-600 dark:from-blue-400 dark:to-cyan-300 leading-[1.2] uppercase">
-                  HIỂU ĐÚNG QUYỀN LỢI, TRỌN VẸN YÊN TÂM
-                </h2>
+                <p className="font-oswald text-lg sm:text-2xl text-amber-500 dark:text-amber-400 font-bold uppercase tracking-wide">
+                  HIỂU ĐÚNG QUYỀN LỢI • TRỌN VẸN YÊN TÂM
+                </p>
               </div>
 
               {/* Friendly Subtitle */}
@@ -84,10 +87,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenArticleByNumber?.(67)}
-                  className="text-left p-3.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-emerald-200/90 dark:border-emerald-900/60 shadow-sm flex items-start space-x-3 group hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer"
+                  className="text-left p-4 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-emerald-50/30 dark:from-emerald-950/40 dark:via-slate-800 dark:to-slate-800/90 border border-emerald-200/90 dark:border-emerald-800/70 shadow-sm flex items-start space-x-3.5 group hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer min-h-[105px]"
                   title="Nhấn để xem Điều 67: Cấm trừ tiền lương"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <Ban className="w-5 h-5" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -95,11 +98,11 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                       <span className="font-oswald text-base font-bold text-emerald-700 dark:text-emerald-400 leading-tight">
                         0đ PHẠT TIỀN
                       </span>
-                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded font-mono">
+                      <span className="text-[10px] text-emerald-700 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-950 px-2 py-0.5 rounded-full font-mono font-semibold">
                         Điều 67
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block mt-0.5 leading-snug">
+                    <span className="text-xs text-slate-600 dark:text-slate-300 block mt-1 leading-snug">
                       Tuyệt đối không trừ lương hay phạt tiền thay kỷ luật
                     </span>
                   </div>
@@ -109,10 +112,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenArticleByNumber?.(58)}
-                  className="text-left p-3.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-blue-200/90 dark:border-blue-900/60 shadow-sm flex items-start space-x-3 group hover:border-[#2076bd] hover:shadow-md transition-all cursor-pointer"
+                  className="text-left p-4 rounded-2xl bg-gradient-to-br from-blue-50/70 via-white to-blue-50/30 dark:from-blue-950/40 dark:via-slate-800 dark:to-slate-800/90 border border-blue-200/90 dark:border-blue-800/70 shadow-sm flex items-start space-x-3.5 group hover:border-[#2076bd] hover:shadow-md transition-all cursor-pointer min-h-[105px]"
                   title="Nhấn để xem Điều 58: Quyền từ chối làm việc khi nguy hiểm"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-[#2076bd] dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/60 text-[#2076bd] dark:text-blue-300 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <Zap className="w-5 h-5" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -120,12 +123,12 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                       <span className="font-oswald text-base font-bold text-[#2076bd] dark:text-blue-400 leading-tight">
                         QUYỀN DỪNG VIỆC
                       </span>
-                      <span className="text-[10px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded font-mono">
+                      <span className="text-[10px] text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-950 px-2 py-0.5 rounded-full font-mono font-semibold">
                         Điều 58
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block mt-0.5 leading-snug">
-                      Được ngắt máy khi rò điện; tính mạng là số 1
+                    <span className="text-xs text-slate-600 dark:text-slate-300 block mt-1 leading-snug">
+                      Được ngắt máy khi rò điện; tính mạng luôn là số 1
                     </span>
                   </div>
                 </button>
@@ -134,10 +137,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenArticleByNumber?.(82)}
-                  className="text-left p-3.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-purple-200/90 dark:border-purple-900/60 shadow-sm flex items-start space-x-3 group hover:border-purple-400 hover:shadow-md transition-all cursor-pointer"
+                  className="text-left p-4 rounded-2xl bg-gradient-to-br from-purple-50/70 via-white to-purple-50/30 dark:from-purple-950/40 dark:via-slate-800 dark:to-slate-800/90 border border-purple-200/90 dark:border-purple-800/70 shadow-sm flex items-start space-x-3.5 group hover:border-purple-400 hover:shadow-md transition-all cursor-pointer min-h-[105px]"
                   title="Nhấn để xem quy định 2 kênh tiếp nhận bảo mật"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/60 text-purple-600 dark:text-purple-300 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -145,11 +148,11 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                       <span className="font-oswald text-base font-bold text-purple-700 dark:text-purple-400 leading-tight">
                         2 KÊNH BẢO VỆ 24H
                       </span>
-                      <span className="text-[10px] text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-1.5 py-0.5 rounded font-mono">
+                      <span className="text-[10px] text-purple-700 dark:text-purple-300 bg-purple-100/80 dark:bg-purple-950 px-2 py-0.5 rounded-full font-mono font-semibold">
                         DEC-020
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block mt-0.5 leading-snug">
+                    <span className="text-xs text-slate-600 dark:text-slate-300 block mt-1 leading-snug">
                       Tiếp nhận bảo mật, chống quấy rối & cấm trả đũa
                     </span>
                   </div>
@@ -159,10 +162,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenArticleByNumber?.(29)}
-                  className="text-left p-3.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-amber-200/90 dark:border-amber-900/60 shadow-sm flex items-start space-x-3 group hover:border-amber-400 hover:shadow-md transition-all cursor-pointer"
+                  className="text-left p-4 rounded-2xl bg-gradient-to-br from-amber-50/70 via-white to-amber-50/30 dark:from-amber-950/40 dark:via-slate-800 dark:to-slate-800/90 border border-amber-200/90 dark:border-amber-800/70 shadow-sm flex items-start space-x-3.5 group hover:border-amber-400 hover:shadow-md transition-all cursor-pointer min-h-[105px]"
                   title="Nhấn để xem Điều 29: Bảo lưu tiền lương khi chuyển việc"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-300 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <Coins className="w-5 h-5" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -170,15 +173,89 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                       <span className="font-oswald text-base font-bold text-amber-700 dark:text-amber-400 leading-tight">
                         BẢO LƯU 100% LƯƠNG
                       </span>
-                      <span className="text-[10px] text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-1.5 py-0.5 rounded font-mono">
+                      <span className="text-[10px] text-amber-700 dark:text-amber-300 bg-amber-100/80 dark:bg-amber-950 px-2 py-0.5 rounded-full font-mono font-semibold">
                         Điều 29
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block mt-0.5 leading-snug">
-                      Giữ nguyên lương 30 ngày đầu khi tạm điều chuyển
+                    <span className="text-xs text-slate-600 dark:text-slate-300 block mt-1 leading-snug">
+                      Giữ nguyên mức lương 30 ngày khi tạm điều chuyển ca
                     </span>
                   </div>
                 </button>
+              </div>
+
+              {/* Quick Role Fast Tracks directly on Hero */}
+              <div className="pt-2">
+                <div className="flex items-center space-x-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Khám phá nhanh cẩm nang theo vị trí của bạn:</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                  <button
+                    onClick={() => onSelectRole ? onSelectRole('barista') : onExploreRoleHub()}
+                    className="p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 hover:border-[#2076bd] hover:bg-blue-50/50 dark:hover:bg-blue-950/40 text-left transition-all group shadow-sm cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg">☕</span>
+                      <div className="min-w-0">
+                        <span className="font-oswald font-bold text-xs text-slate-900 dark:text-white uppercase block truncate group-hover:text-[#2076bd] transition-colors">Barista</span>
+                        <span className="text-[10px] text-slate-400 block truncate">Quầy & Thu ngân</span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => onSelectRole ? onSelectRole('cht') : onExploreRoleHub()}
+                    className="p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 hover:border-amber-400 hover:bg-amber-50/50 dark:hover:bg-amber-950/40 text-left transition-all group shadow-sm cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg">👔</span>
+                      <div className="min-w-0">
+                        <span className="font-oswald font-bold text-xs text-slate-900 dark:text-white uppercase block truncate group-hover:text-amber-600 transition-colors">CHT</span>
+                        <span className="text-[10px] text-slate-400 block truncate">Cửa Hàng Trưởng</span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => onSelectRole ? onSelectRole('qlcl') : onExploreRoleHub()}
+                    className="p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 hover:border-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/40 text-left transition-all group shadow-sm cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg">📋</span>
+                      <div className="min-w-0">
+                        <span className="font-oswald font-bold text-xs text-slate-900 dark:text-white uppercase block truncate group-hover:text-emerald-600 transition-colors">QLCL (QC)</span>
+                        <span className="text-[10px] text-slate-400 block truncate">Chuẩn 5S & VSAT</span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => onSelectRole ? onSelectRole('dho') : onExploreRoleHub()}
+                    className="p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 hover:border-purple-400 hover:bg-purple-50/50 dark:hover:bg-purple-950/40 text-left transition-all group shadow-sm cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg">🏢</span>
+                      <div className="min-w-0">
+                        <span className="font-oswald font-bold text-xs text-slate-900 dark:text-white uppercase block truncate group-hover:text-purple-600 transition-colors">Khối DHO</span>
+                        <span className="text-[10px] text-slate-400 block truncate">Văn phòng hỗ trợ</span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => onSelectRole ? onSelectRole('newbie') : onExploreRoleHub()}
+                    className="p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 hover:border-teal-400 hover:bg-teal-50/50 dark:hover:bg-teal-950/40 text-left transition-all group shadow-sm cursor-pointer col-span-2 sm:col-span-1"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg">🌱</span>
+                      <div className="min-w-0">
+                        <span className="font-oswald font-bold text-xs text-slate-900 dark:text-white uppercase block truncate group-hover:text-teal-600 transition-colors">Newbie</span>
+                        <span className="text-[10px] text-slate-400 block truncate">Thử việc 6 ngày</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
 
               {/* Action Buttons Tier 1 & Tier 2 */}

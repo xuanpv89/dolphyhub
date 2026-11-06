@@ -85,7 +85,7 @@ export const AmbienceAudio: React.FC = () => {
   return (
     <button
       onClick={toggleSound}
-      className={`fixed bottom-5 right-5 z-40 flex items-center space-x-2 px-3.5 py-2.5 rounded-full shadow-lg border transition-all duration-300 text-xs font-bold ${
+      className={`fixed bottom-5 left-5 sm:left-6 z-40 flex items-center space-x-2 px-3.5 py-2.5 rounded-full shadow-xl border backdrop-blur-md transition-all duration-300 text-xs font-bold cursor-pointer ${
         isPlaying
           ? 'bg-[#2076bd] text-white border-blue-400 ring-4 ring-blue-500/20 scale-105'
           : 'bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-[#2076bd] hover:text-[#2076bd]'

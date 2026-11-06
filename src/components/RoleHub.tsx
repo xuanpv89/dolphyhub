@@ -17,10 +17,26 @@ import {
 interface RoleHubProps {
   onOpenArticleByNumber: (num: number) => void;
   onExploreFlashcards: () => void;
+  activeRole?: string;
+  onSelectRole?: (role: 'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie') => void;
 }
 
-export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExploreFlashcards }) => {
-  const [selectedRole, setSelectedRole] = useState<'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie'>('barista');
+export const RoleHub: React.FC<RoleHubProps> = ({ 
+  onOpenArticleByNumber, 
+  onExploreFlashcards,
+  activeRole,
+  onSelectRole
+}) => {
+  const [internalRole, setInternalRole] = useState<'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie'>('barista');
+  const selectedRole = (activeRole as 'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie') || internalRole;
+
+  const handleRoleChange = (roleId: 'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie') => {
+    if (onSelectRole) {
+      onSelectRole(roleId);
+    } else {
+      setInternalRole(roleId);
+    }
+  };
 
   const roles = [
     {
@@ -161,7 +177,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
             return (
               <button
                 key={r.id}
-                onClick={() => setSelectedRole(r.id as typeof selectedRole)}
+                onClick={() => handleRoleChange(r.id as typeof selectedRole)}
                 className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between space-y-2 relative overflow-hidden ${
                   isSelected
                     ? 'bg-[#2076bd] text-white border-blue-400 shadow-lg shadow-blue-600/25 ring-2 ring-blue-400/30 scale-102'

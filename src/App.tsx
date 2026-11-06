@@ -28,6 +28,7 @@ export function App() {
 
   const [currentTab, setCurrentTab] = useState<string>('home');
   const [isContinuousView, setIsContinuousView] = useState<boolean>(false);
+  const [activeRole, setActiveRole] = useState<'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie'>('barista');
 
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [selectedArticleContext, setSelectedArticleContext] = useState<{
@@ -105,6 +106,12 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSelectRoleFromHero = (roleId: 'barista' | 'cht' | 'qlcl' | 'dho' | 'newbie') => {
+    setActiveRole(roleId);
+    setCurrentTab('role');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f172a] text-[#1e293b] dark:text-[#f8fafc] flex flex-col font-sans transition-colors duration-200 pb-16 md:pb-0">
       
@@ -137,6 +144,7 @@ export function App() {
                   onWatchVideo={() => switchTabAndScroll('media')}
                   onStartQuiz={() => switchTabAndScroll('media')}
                   onOpenArticleByNumber={handleOpenArticleByNumber}
+                  onSelectRole={handleSelectRoleFromHero}
                 />
                 <ComparisonSection />
                 <FlashcardsSection />
@@ -153,6 +161,8 @@ export function App() {
                     const fc = document.getElementById('flashcards');
                     if (fc) fc.scrollIntoView({ behavior: 'smooth' });
                   }}
+                  activeRole={activeRole}
+                  onSelectRole={setActiveRole}
                 />
                 <InteractiveChecklist />
                 <FlashcardsSection />
@@ -204,6 +214,7 @@ export function App() {
               onWatchVideo={() => switchTabAndScroll('media')}
               onStartQuiz={() => switchTabAndScroll('media')}
               onOpenArticleByNumber={handleOpenArticleByNumber}
+              onSelectRole={handleSelectRoleFromHero}
             />
             <RoleHub 
               onOpenArticleByNumber={handleOpenArticleByNumber}
@@ -211,6 +222,8 @@ export function App() {
                 const fc = document.getElementById('flashcards');
                 if (fc) fc.scrollIntoView({ behavior: 'smooth' });
               }}
+              activeRole={activeRole}
+              onSelectRole={setActiveRole}
             />
             <VisualInfographics />
             <FlashcardsSection />
