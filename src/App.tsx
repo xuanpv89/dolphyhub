@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroBanner } from './components/HeroBanner';
+import { RoleHub } from './components/RoleHub';
+import { FlashcardsSection } from './components/FlashcardsSection';
+import { VideoSection } from './components/VideoSection';
+import { InteractiveChecklist } from './components/InteractiveChecklist';
 import { ComparisonSection } from './components/ComparisonSection';
-import { RoleGuideSection } from './components/RoleGuideSection';
 import { ChapterExplorer } from './components/ChapterExplorer';
 import { MatrixExplorer } from './components/MatrixExplorer';
 import { ScenariosSection } from './components/ScenariosSection';
 import { QuizSection } from './components/QuizSection';
 import { WhistleblowerSection } from './components/WhistleblowerSection';
+import { AmbienceAudio } from './components/AmbienceAudio';
 import { Footer } from './components/Footer';
 import { ArticleModal } from './components/ArticleModal';
 import { ReportModal } from './components/ReportModal';
@@ -94,7 +98,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f172a] text-[#1e293b] dark:text-[#f8fafc] flex flex-col font-sans transition-colors duration-200">
-      {/* Navbar */}
+      {/* Top Navbar */}
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
@@ -103,42 +107,59 @@ export function App() {
         activeSection={activeSection}
       />
 
-      {/* Main Content */}
+      {/* Main Content Sections */}
       <main className="flex-1">
         {/* 1. Hero Overview */}
         <HeroBanner
           onOpenSearch={() => setIsSearchOpen(true)}
           onExploreChapters={() => scrollTo('chapters')}
-          onExploreMatrix={() => scrollTo('matrix')}
+          onExploreRoleHub={() => scrollTo('role-hub')}
+          onExploreFlashcards={() => scrollTo('flashcards')}
+          onWatchVideo={() => scrollTo('videos')}
           onStartQuiz={() => scrollTo('quiz')}
         />
 
-        {/* 2. Bước Tiến Mới (So sánh Cũ vs Mới 2026) */}
+        {/* 2. Trạm Không Gian 5 Vai Trò (Dedicated Role Hubs) */}
+        <RoleHub 
+          onOpenArticleByNumber={handleOpenArticleByNumber}
+          onExploreFlashcards={() => scrollTo('flashcards')}
+        />
+
+        {/* 3. Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards) */}
+        <FlashcardsSection />
+
+        {/* 4. Thước Phim 13 Năm & Ảnh Quầy Bar Thực Tế */}
+        <VideoSection />
+
+        {/* 5. Checklist Bỏ Túi Mở Ca & Đóng Ca Thực Hành */}
+        <InteractiveChecklist />
+
+        {/* 6. 6 Điểm Đột Phá Mới Của DOL-HR-001 (So sánh Cũ vs 2026) */}
         <ComparisonSection />
 
-        {/* 3. Định Hướng Theo Từng Vị Trí (Barista, CHT, QLCL, DHO) */}
-        <RoleGuideSection onOpenArticleByNumber={handleOpenArticleByNumber} />
-
-        {/* 4. Chi Tiết 11 Chương Trực Quan */}
+        {/* 7. Chi Tiết 11 Chương Trực Quan (Chế độ Bỏ túi vs Pháp lý) */}
         <ChapterExplorer onSelectArticle={handleSelectArticle} />
 
-        {/* 5. Tra Cứu Phụ Lục A (Ma Trận 28+ Hành Vi & Chế Tài Tối Đa) */}
+        {/* 8. Tra Cứu Phụ Lục A (Ma Trận 28+ Hành Vi & Chế Tài Tối Đa) */}
         <MatrixExplorer />
 
-        {/* 6. Tình Huống Thực Tế & Case Study Quầy Bar */}
+        {/* 9. Tình Huống Thực Tế & Hỏi Đáp Quầy Bar */}
         <ScenariosSection onOpenArticleByNumber={handleOpenArticleByNumber} />
 
-        {/* 7. Mini Quiz: Đại Sứ Hiểu Luật Dolphy 2026 */}
+        {/* 10. Mini Quiz: Đại Sứ Hiểu Luật Dolphy 2026 */}
         <QuizSection />
 
-        {/* 8. 02 Kênh Tiếp Nhận & Bảo Vệ Độc Lập (DEC-020) */}
+        {/* 11. 02 Kênh Tiếp Nhận & Bảo Vệ Độc Lập (DEC-020) */}
         <WhistleblowerSection onOpenReportModal={() => setIsReportOpen(true)} />
       </main>
+
+      {/* Ambience Audio Floating Button (Tiếng Quán Cà Phê Chill) */}
+      <AmbienceAudio />
 
       {/* Footer */}
       <Footer />
 
-      {/* Modals */}
+      {/* Interactive Modals */}
       <ArticleModal
         article={selectedArticle}
         chapterTitle={selectedArticleContext.chapterTitle}

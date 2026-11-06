@@ -25,15 +25,37 @@ Hệ thống thiết kế kế thừa trực tiếp từ hệ sinh thái Dolphy 
 
 ## 🚀 3. Các Phân Hệ Tính Năng Cốt Lõi
 
-### 1. 🏠 Trang Tổng Quan & 6 Bước Tiến Đột Phá (Comparison)
-- Thông điệp từ CEO Phạm Duy Linh: Tôn trọng nhân phẩm & công bằng.
-- Bảng so sánh trực quan **Nội quy cũ vs. Nội quy 2026**:
-  - **0đ Phạt Tiền:** Tuyệt đối không phạt tiền, không trừ lương thay kỷ luật.
-  - **Quyền Dừng Việc:** Được dừng thao tác nguy hiểm và dừng bán nguyên liệu lỗi mà không bị phạt.
-  - **Bãi Bỏ Cọc Đào Tạo:** Không thu cọc, không giữ bản chính giấy tờ của nhân viên.
-  - **Bãi Bỏ Chia Tiền Đền Theo Ca:** Chấm dứt văn hóa bắt cả ca cùng đền bù; cá nhân hóa trách nhiệm.
-  - **Tôn Trọng Quyền Riêng Tư:** Nhân viên có quyền trao đổi về mức lương của chính mình.
-  - **2 Kênh Bảo Vệ Độc Lập:** Cơ chế phòng chống quấy rối tình dục và bảo vệ con người theo DEC-020.
+### 1. ☕ Trạm Không Gian 5 Vai Trò (Dedicated Role Hubs)
+- **Nhánh riêng cho từng vị trí trong công ty**, kích hoạt tức thì không gian cá nhân hóa:
+  - ☕ **Barista & Thu Ngân (Chiến Thần Quầy Bar):** Giờ ca 1 (6h/7h-14h) & ca 2 (14h-21h/22h), quyền dừng máy pha La Marzocco khi rò điện, quyền dán nhãn HOLD dừng bán sữa lỗi, cấm bắt đền bồi thường cả ca.
+  - 🏪 **Cửa Hàng Trưởng CHT (Thuyền Trưởng Chi Nhánh):** Lập lịch trước 7 ngày, quyền xếp ca gãy, tuyệt đối cấm tự phạt tiền (vi phạm bị cách chức N2), chỉ huy PCCC và coaching nhân sự.
+  - 🔬 **Quản Lý Chất Lượng QLCL (Sứ Giả Chuẩn Vị):** Quy trình Hold-Release ATTP, test sữa thanh trùng, kiểm chuẩn hạt mộc Arabica Cầu Đất & Robusta, bảo toàn mẫu đối soát.
+  - 🏢 **Khối Văn Phòng DHO (Hậu Phương Vững Chắc):** Giờ 8h-17h (T2-T6, 40h/tuần), bảo mật dữ liệu, thủ tục tạm điều chuyển và tính lương OT.
+  - 🌱 **Bạn Mới / Newbie (7 Ngày Đầu Tiên Tại Dolphy):** Không phải đóng cọc đào tạo, kèm 1-1 tay nghề Barista, làm quen nhịp ca và an tâm hòa nhập gia đình Cá Heo Xanh.
+
+### 2. ⚡ Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards)
+- 6 thẻ bài tương tác lật 2 mặt vui vẻ, hài hước, giải tỏa hoàn toàn áp lực:
+  - *Lỡ tay làm rớt bình Cold Brew đắt tiền?* ➡️ Bình tĩnh! Điều 72 cấm chia tiền cả ca đền bù!
+  - *Mưa ngập Thảo Điền lỡ muộn ca 20 phút?* ➡️ 0đ tiền phạt! Báo CHT và chấm công giờ thực tế.
+  - *Khách trêu ghẹo, đụng chạm khi lấy nước?* ➡️ Bật khiên Điều 39 bảo vệ 24/7!
+  - *Máy pha bốc khói rò điện lúc quán đông?* ➡️ Ngắt cầu dao ngay, tính mạng quý hơn 1.000 cốc cà phê!
+  - *Sữa tươi mở nắp có mùi chua nhẹ dù date còn?* ➡️ Dán nhãn HOLD dừng bán liền, an toàn là số 1!
+  - *Tâm sự lương với đứa bạn thân có bị sa thải?* ➡️ Thoải mái nha, Điều 50 công nhận quyền của bạn!
+
+### 3. 🎬 Thước Phim 13 Năm & Khoảnh Khắc Quầy Bar Thật
+- Xem trực tiếp video **"Dolphy's Story — Happiness In A Cup"** (`dolphys-story.mp4`).
+- Thư viện ảnh thực tế quầy bar La Marzocco, nụ cười Barista, góc quán 28 Thảo Điền và Trần Lựu.
+
+### 4. 📋 Checklist Bỏ Túi Mở Ca & Đóng Ca Thực Hành
+- Sổ tay tích chọn điện tử lưu trực tiếp trên máy:
+  - **Mở ca (Ca 1):** Kiểm tra rơ-le an toàn máy pha, xả họng group-head, kiểm tra date sữa (<5°C), dial-in shot Espresso, đồng phục giày bít mũi.
+  - **Đóng ca (Ca 2):** Vệ sinh blind basket, ngâm vòi đánh sữa, đổ bã cà phê, 5S quầy bar, ngắt cầu dao gia nhiệt, khóa két tiền.
+
+### 5. 🎧 Tiếng Quán Cà Phê Chill Thảo Điền (Ambience Sound)
+- Nút bấm góc phải màn hình bật âm thanh nền thư thái quán cà phê giúp vừa đọc vừa chill.
+
+### 6. 📖 Thư Viện 11 Chương (Chế Độ Bỏ Túi vs Pháp Lý Gốc)
+- Nút chuyển chế độ: **Chế độ Bỏ Túi** (câu từ ngắn gọn, icon thân thiện) và **Chế độ Pháp lý đầy đủ** (87 điều đối chiếu).
 
 ### 2. 👥 Góc Nhìn Theo Vị Trí (Role-Based Guide)
 - Phân loại hướng dẫn chuyên biệt cho 4 đối tượng:

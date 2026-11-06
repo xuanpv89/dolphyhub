@@ -9,8 +9,9 @@ import {
   PhoneCall, 
   Sparkles,
   BookOpen,
-  Scale,
-  Award,
+  Film,
+  Zap,
+  CheckSquare,
   Users
 } from 'lucide-react';
 
@@ -42,13 +43,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { id: 'overview', label: 'Tổng Quan' },
-    { id: 'comparison', label: 'Điểm Đột Phá' },
-    { id: 'roles', label: 'Góc Vị Trí' },
+    { id: 'role-hub', label: '5 Nhánh Vai Trò' },
+    { id: 'flashcards', label: 'Bí Kíp 3 Giây' },
+    { id: 'videos', label: 'Thước Phim & Ảnh' },
+    { id: 'checklist', label: 'Checklist Ca' },
+    { id: 'comparison', label: 'Điểm Mới' },
     { id: 'chapters', label: '11 Chương' },
     { id: 'matrix', label: 'Phụ Lục A' },
     { id: 'scenarios', label: 'Tình Huống' },
     { id: 'quiz', label: 'Mini Quiz' },
-    { id: 'channels', label: '2 Kênh Hỗ Trợ' },
   ];
 
   const scrollTo = (id: string) => {
@@ -72,19 +75,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center space-x-3">
           <span className="font-bold tracking-wider uppercase">CÔNG TY CỔ PHẦN CÁ HEO XANH (BLUE DOLPHIN)</span>
           <span className="opacity-60">•</span>
-          <span>Hệ Thống Chuỗi Dolphy Café</span>
+          <span>Chuỗi Dolphy Café TP.HCM</span>
           <span className="opacity-60">•</span>
           <span className="bg-[#FAEA28] text-slate-900 px-1.5 py-0.2 rounded font-bold text-[10px]">
-            DỰ THẢO V1.0 APPROVED
+            NỘI QUY LAO ĐỘNG v1.0
           </span>
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1.5 opacity-90 hover:opacity-100">
             <PhoneCall className="w-3 h-3 text-[#FAEA28]" />
-            <span>Hotline DHO: <strong>0938 084 985</strong></span>
+            <span>Hotline Hỗ Trợ DHO: <strong>0938 084 985</strong></span>
           </div>
           <span className="opacity-60">|</span>
-          <span className="text-[#FAEA28]">"happiness in a cup"</span>
+          <span className="text-[#FAEA28] font-semibold">"happiness in a cup" ☕🐬</span>
         </div>
       </div>
 
@@ -94,11 +97,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Brand Logo & Title */}
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollTo('overview')}>
             <img
-              src="/images/dolphy-emblem.png"
+              src="./images/dolphy-emblem.png"
               alt="Dolphy Logo"
               className="h-10 w-10 object-contain rounded-full shadow-sm ring-2 ring-[#2076bd]/20"
               onError={(e) => {
-                // fallback
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
@@ -107,18 +109,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                 DOLPHY COMPASS
               </span>
               <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-0.5">
-                Cẩm Nang Nội Quy Lao Động 2026
+                Cẩm Nang Văn Hóa & Nội Quy 2026
               </span>
             </div>
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden xl:flex items-center space-x-1">
+          <nav className="hidden 2xl:flex items-center space-x-1">
             {navLinks.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                   activeSection === item.id
                     ? 'text-[#2076bd] bg-blue-50 dark:bg-blue-950/60 font-bold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-[#2076bd] dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -138,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Tìm kiếm điều luật (Ctrl+K)"
             >
               <Search className="w-4 h-4 text-[#2076bd]" />
-              <span className="hidden md:inline font-medium">Tìm kiếm...</span>
+              <span className="hidden md:inline font-medium">Tìm nhanh...</span>
               <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-700 rounded border border-slate-200 dark:border-slate-600 text-slate-400">
                 ⌘K
               </kbd>
@@ -165,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 xl:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
+              className="p-2 2xl:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -175,13 +177,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-xl">
+        <div className="2xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-xl max-h-[80vh] overflow-y-auto">
           <div className="grid grid-cols-2 gap-2 pt-2 pb-3">
             {navLinks.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`text-left px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
                   activeSection === item.id
                     ? 'bg-blue-50 dark:bg-blue-950 text-[#2076bd] font-bold'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -197,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               setMobileMenuOpen(false);
               onOpenReport();
             }}
-            className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-[#2076bd] text-white font-bold text-sm shadow-md"
+            className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-[#2076bd] text-white font-bold text-xs shadow-md uppercase tracking-wider"
           >
             <ShieldCheck className="w-4 h-4 text-[#FAEA28]" />
             <span>GỬI PHẢN ÁNH BẢO MẬT (DEC-020)</span>
