@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, RotateCw, CheckCircle2, Heart, Shield, Coffee, Zap } from 'lucide-react';
+import { Sparkles, RotateCw, CheckCircle2, Heart, Shield, Coffee, Zap, HelpCircle } from 'lucide-react';
 
 interface Flashcard {
   id: number;
@@ -10,7 +10,8 @@ interface Flashcard {
   backTitle: string;
   backContent: string;
   legalTip: string;
-  color: string;
+  tagColor: string;
+  accentBg: string;
 }
 
 export const FlashcardsSection: React.FC = () => {
@@ -26,7 +27,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: 'BÌNH TĨNH NHA! ĐÃ CÓ ĐIỀU 72 BẢO VỆ!',
       backContent: 'Dolphy TUYỆT ĐỐI CẤM chia đều tiền đền cho cả ca. Sơ suất vỡ đồ chỉ tính giá trị còn lại (đã trừ hao mòn), không bắt đền ngay tiền mặt và khấu trừ lương tối đa 30%/tháng.',
       legalTip: '⚖️ Điều 72 & 74: Cấm bồi thường tập thể, trừ khấu hao thiết bị.',
-      color: 'from-blue-600 to-cyan-600',
+      tagColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border-blue-200',
+      accentBg: 'from-blue-600 via-[#2076bd] to-indigo-700',
     },
     {
       id: 2,
@@ -37,7 +39,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: '0Đ PHẠT TIỀN! CẤM TRỪ LƯƠNG THAY KỶ LUẬT!',
       backContent: 'Ở Dolphy không có bất kỳ quỹ phạt tự phát nào! Bạn chỉ không nhận lương cho 20 phút chưa làm thực tế. Báo ngay CHT lý do ngập nước, bạn không hề bị kỷ luật.',
       legalTip: '⚖️ Điều 5 & 14: Tính lương theo giờ thực tế, tuyệt đối 0đ phạt tiền.',
-      color: 'from-amber-500 to-yellow-600',
+      tagColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-200',
+      accentBg: 'from-amber-500 via-yellow-600 to-amber-700',
     },
     {
       id: 3,
@@ -48,7 +51,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: 'BẬT KHIÊN ĐIỀU 39! BẠN ĐƯỢC BẢO VỆ 100%!',
       backContent: 'Lùi lại vị trí an toàn, yêu cầu khách tôn trọng và gọi CHT tiếp nhận xử lý ngay. Dolphy có 2 kênh độc lập (DEC-020) bảo vệ bạn, không ai phải chịu đựng quấy rối!',
       legalTip: '⚖️ Điều 38 & 39: Nghiêm cấm quấy rối tình dục, xử lý nghiêm đến sa thải.',
-      color: 'from-pink-600 to-purple-600',
+      tagColor: 'bg-pink-100 text-pink-800 dark:bg-pink-950 dark:text-pink-300 border-pink-200',
+      accentBg: 'from-pink-600 via-rose-600 to-purple-700',
     },
     {
       id: 4,
@@ -59,7 +63,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: 'NGẮT CẦU DAO NGAY! TÍNH MẠNG LÀ SỐ 1!',
       backContent: 'Bạn có QUYỀN DỪNG VIỆC TỨC THÌ. Không bao giờ đánh đổi tính mạng và sự an toàn của Barista lấy doanh thu hay tốc độ phục vụ. CHT ép làm sẽ bị cách chức (QL-02)!',
       legalTip: '⚖️ Điều 6 & 30: Quyền dừng công việc nguy hiểm không bị phạt.',
-      color: 'from-red-600 to-amber-600',
+      tagColor: 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 border-red-200',
+      accentBg: 'from-red-600 via-rose-600 to-amber-700',
     },
     {
       id: 5,
@@ -70,7 +75,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: 'DÁN NHÃN "HOLD" NGỪNG BÁN NGAY LẬP TỨC!',
       backContent: 'Barista có QUYỀN DỪNG PHỤC VỤ thực phẩm lỗi mà không cần chờ ai phê duyệt. Khách hàng uống cà phê ngon và an toàn là nhờ chính sự trung thực của bạn!',
       legalTip: '⚖️ Điều 34: Quyền dừng phục vụ nguyên liệu nghi biến chất.',
-      color: 'from-emerald-600 to-teal-700',
+      tagColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200',
+      accentBg: 'from-emerald-600 via-teal-600 to-cyan-700',
     },
     {
       id: 6,
@@ -81,7 +87,8 @@ export const FlashcardsSection: React.FC = () => {
       backTitle: 'THOẢI MÁI NHA! ĐIỀU 50 CÔNG NHẬN QUYỀN CỦA BẠN!',
       backContent: 'Nội quy mới đã xóa bỏ quy định cấm vô lý này! Việc trao đổi về mức lương của CHÍNH BẢN THÂN bạn là quyền hợp pháp. Chỉ cấm xâm nhập xem trộm lương người khác thôi nhé!',
       legalTip: '⚖️ Điều 50 (khoản 2): Trao đổi về lương của mình không vi phạm bí mật.',
-      color: 'from-indigo-600 to-blue-700',
+      tagColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border-indigo-200',
+      accentBg: 'from-indigo-600 via-blue-600 to-purple-700',
     },
   ];
 
@@ -105,11 +112,11 @@ export const FlashcardsSection: React.FC = () => {
             BÍ KÍP BỎ TÚI 3 GIÂY CHO ĐẠI GIA ĐÌNH DOLPHY
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Nhấp vào từng tấm thẻ dưới đây để "lật mở" lời giải đáp cực kỳ nhẹ nhàng, vui vẻ và chuẩn luật:
+            Nhấp vào từng tấm thẻ dưới đây để <strong>lật mở bí kíp</strong> cực kỳ nhẹ nhàng, vui vẻ và chuẩn luật:
           </p>
         </div>
 
-        {/* 6 Flip Cards Grid */}
+        {/* 6 Visual Flip Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {flashcards.map((card) => {
             const isFlipped = flippedIds.includes(card.id);
@@ -118,24 +125,28 @@ export const FlashcardsSection: React.FC = () => {
               <div
                 key={card.id}
                 onClick={() => toggleFlip(card.id)}
-                className="cursor-pointer group h-80 perspective-1000 select-none"
+                className="cursor-pointer group h-84 perspective-1000 select-none"
               >
                 <div
-                  className={`relative w-full h-full rounded-3xl transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-xl ${
+                  className={`relative w-full h-full rounded-3xl transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-2xl ${
                     isFlipped ? 'rotate-y-180' : ''
                   }`}
                 >
                   {/* Front Side */}
-                  <div className="absolute inset-0 backface-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-slate-200/80 dark:border-slate-700 p-6 flex flex-col justify-between hover:border-[#2076bd] transition-colors">
-                    <div className="space-y-3">
+                  <div className="absolute inset-0 backface-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-slate-200/90 dark:border-slate-700 p-6 flex flex-col justify-between hover:border-[#2076bd] transition-colors relative overflow-hidden">
+                    
+                    {/* Top Decorative accent dot */}
+                    <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-3xl">{card.frontEmoji}</span>
-                        <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-700/60 border border-slate-200/80 dark:border-slate-600 flex items-center justify-center text-3xl shadow-sm">
+                          {card.frontEmoji}
+                        </div>
+                        <span className={`text-[10px] font-bold uppercase px-3 py-1 rounded-full border ${card.tagColor}`}>
                           {card.frontTag}
                         </span>
                       </div>
 
-                      <h3 className="font-oswald text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug pt-2">
+                      <h3 className="font-oswald text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug pt-1">
                         {card.frontTitle}
                       </h3>
 
@@ -144,23 +155,24 @@ export const FlashcardsSection: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs text-[#2076bd] font-bold">
-                      <span className="flex items-center gap-1.5">
-                        <RotateCw className="w-3.5 h-3.5 animate-spin-slow" />
-                        Chạm để lật bí kíp
+                    {/* Bottom Action Bar */}
+                    <div className="pt-3 border-t border-slate-100 dark:border-slate-700/80 flex items-center justify-between">
+                      <span className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#2076bd] dark:text-blue-400 group-hover:scale-105 transition-transform">
+                        <RotateCw className="w-4 h-4 text-amber-500 animate-spin-slow" />
+                        <span>Chạm để lật bí kíp ↺</span>
                       </span>
-                      <span className="text-slate-400 font-normal text-[11px]">Thẻ #{card.id}</span>
+                      <span className="text-[11px] font-mono text-slate-400">Thẻ #{card.id}</span>
                     </div>
                   </div>
 
                   {/* Back Side (Flipped) */}
-                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-3xl bg-gradient-to-br from-[#2076bd] via-[#165b94] to-slate-900 text-white p-6 flex flex-col justify-between shadow-2xl border-2 border-blue-400/40">
+                  <div className={`absolute inset-0 backface-hidden rotate-y-180 rounded-3xl bg-gradient-to-br ${card.accentBg} text-white p-6 flex flex-col justify-between shadow-2xl border-2 border-white/20`}>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between text-[#FAEA28]">
-                        <span className="text-xs font-bold font-oswald tracking-wider uppercase">
+                        <span className="text-xs font-bold font-oswald tracking-wider uppercase bg-black/20 px-2.5 py-0.5 rounded-full backdrop-blur-sm">
                           {card.frontTag}
                         </span>
-                        <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                        <CheckCircle2 className="w-6 h-6 text-[#FAEA28]" />
                       </div>
 
                       <h4 className="font-oswald text-base sm:text-lg font-bold text-[#FAEA28] leading-tight">
@@ -172,11 +184,11 @@ export const FlashcardsSection: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="space-y-2 pt-2 border-t border-white/20">
-                      <div className="text-[11px] text-blue-200 font-mono">
+                    <div className="space-y-2 pt-3 border-t border-white/20">
+                      <div className="text-[11px] text-blue-100 font-mono bg-black/20 p-2 rounded-xl border border-white/10">
                         {card.legalTip}
                       </div>
-                      <div className="text-[10px] text-blue-300 text-right italic">
+                      <div className="text-[10px] text-blue-200 text-right italic font-medium">
                         Bấm để quay lại mặt trước ↺
                       </div>
                     </div>
