@@ -93,53 +93,50 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div
         className={`transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-lg shadow-slate-900/5 border-b border-slate-200/80 dark:border-slate-800'
+            ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-md shadow-slate-900/5 border-b border-slate-200/80 dark:border-slate-800'
             : 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800/80'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-18">
+          <div className="flex items-center justify-between h-14 sm:h-16 gap-2">
             
-            {/* Brand Logo & Title */}
+            {/* Brand Logo & Title - Compact & Sleek */}
             <div 
-              className="flex items-center space-x-3 cursor-pointer select-none group flex-shrink-0" 
+              className="flex items-center space-x-2.5 cursor-pointer select-none group flex-shrink-0" 
               onClick={() => onSelectTab('home')}
             >
               <div className="relative">
                 <img
                   src="./images/dolphy-emblem.png"
                   alt="Dolphy Logo"
-                  className="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-2xl shadow-sm ring-2 ring-[#2076bd]/20 group-hover:scale-105 group-hover:ring-[#2076bd]/40 transition-all duration-300"
+                  className="h-7 w-7 sm:h-8 sm:w-8 object-contain rounded-xl shadow-xs ring-1 ring-[#2076bd]/25 group-hover:scale-105 transition-all duration-200"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 border border-white dark:border-slate-900 rounded-full" />
               </div>
 
               <div className="flex flex-col">
-                <div className="flex items-center space-x-1.5">
-                  <span className="font-oswald text-xl sm:text-2xl font-black tracking-wider text-[#2076bd] dark:text-blue-400 leading-none">
+                <div className="flex items-center space-x-1 leading-none">
+                  <span className="font-oswald text-sm sm:text-base font-bold tracking-wider text-[#2076bd] dark:text-blue-400">
                     DOLPHY
                   </span>
-                  <span className="font-oswald text-xl sm:text-2xl font-light tracking-wider text-slate-800 dark:text-white leading-none">
+                  <span className="font-oswald text-sm sm:text-base font-medium tracking-wider text-slate-800 dark:text-white">
                     COMPASS
                   </span>
-                </div>
-                <div className="flex items-center space-x-1.5 mt-0.5">
-                  <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                    Cẩm Nang Nội Bộ 2026
-                  </span>
-                  <span className="w-1 h-1 rounded-full bg-[#FAEA28]" />
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold font-mono">
+                  <span className="text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-1 py-0.2 rounded font-mono font-bold">
                     v1.0
                   </span>
                 </div>
+                <span className="text-[9px] text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-0.5">
+                  Nội Quy Lao Động 2026
+                </span>
               </div>
             </div>
 
-            {/* Desktop Center Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-1 bg-slate-100/70 dark:bg-slate-800/70 p-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/60">
+            {/* Desktop Center Navigation Links - Evenly Spaced & Never Wrapping */}
+            <nav className="hidden lg:flex items-center justify-center space-x-1 xl:space-x-2 bg-slate-100/70 dark:bg-slate-800/70 p-1 rounded-full border border-slate-200/60 dark:border-slate-700/60 flex-shrink-0">
               {mainTabs.map((t) => {
                 const Icon = t.icon;
                 const isActive = currentTab === t.id && !isContinuousView;
@@ -148,31 +145,31 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     key={t.id}
                     onClick={() => onSelectTab(t.id)}
-                    className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    className={`flex items-center space-x-1.5 px-3 xl:px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                       isActive
-                        ? 'bg-[#2076bd] text-white shadow-md shadow-blue-500/25 scale-[1.02]'
+                        ? 'bg-[#2076bd] text-white shadow-sm shadow-blue-500/25 scale-[1.02]'
                         : 'text-slate-600 dark:text-slate-300 hover:text-[#2076bd] dark:hover:text-white hover:bg-white/80 dark:hover:bg-slate-700/60'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#FAEA28]' : 'text-slate-400'}`} />
-                    <span>{t.label}</span>
+                    <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-[#FAEA28]' : 'text-slate-400'}`} />
+                    <span className="whitespace-nowrap">{t.label}</span>
                   </button>
                 );
               })}
             </nav>
 
-            {/* Right Action Tools */}
-            <div className="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0">
+            {/* Right Action Tools - Compact & Aligned */}
+            <div className="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
               
               {/* Quick Search Capsule Button */}
               <button
                 onClick={onOpenSearch}
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50/90 dark:bg-slate-800/90 text-slate-500 dark:text-slate-400 hover:border-[#2076bd] hover:text-[#2076bd] hover:bg-white dark:hover:bg-slate-800 transition-all text-xs shadow-sm cursor-pointer"
+                className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50/90 dark:bg-slate-800/90 text-slate-500 dark:text-slate-400 hover:border-[#2076bd] hover:text-[#2076bd] hover:bg-white dark:hover:bg-slate-800 transition-all text-xs shadow-xs cursor-pointer whitespace-nowrap"
                 title="Tìm kiếm điều luật (Ctrl+K)"
               >
-                <Search className="w-3.5 h-3.5 text-[#2076bd]" />
-                <span className="hidden sm:inline font-medium text-slate-600 dark:text-slate-300">Tìm điều luật...</span>
-                <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-700 rounded-md border border-slate-200 dark:border-slate-600 text-slate-400 shadow-xs">
+                <Search className="w-3.5 h-3.5 text-[#2076bd] flex-shrink-0" />
+                <span className="hidden xl:inline font-medium text-slate-600 dark:text-slate-300">Tìm điều luật</span>
+                <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.2 text-[9px] font-mono bg-white dark:bg-slate-700 rounded border border-slate-200 dark:border-slate-600 text-slate-400">
                   ⌘K
                 </kbd>
               </button>
@@ -180,39 +177,39 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* View Mode Toggle Pill */}
               <button
                 onClick={() => setIsContinuousView(!isContinuousView)}
-                className={`hidden md:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all cursor-pointer shadow-sm ${
+                className={`hidden md:inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-full border text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shadow-xs ${
                   isContinuousView
                     ? 'bg-amber-50 dark:bg-amber-950/60 border-amber-300 text-amber-700 dark:text-amber-300'
                     : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#2076bd]'
                 }`}
                 title={isContinuousView ? 'Chuyển sang chế độ từng mục' : 'Chuyển sang chế độ cuộn trang liên tục'}
               >
-                <Layers className="w-3.5 h-3.5 text-[#2076bd]" />
-                <span className="hidden xl:inline">{isContinuousView ? 'Cuộn 1 Trang' : 'Theo Mục'}</span>
+                <Layers className="w-3.5 h-3.5 text-[#2076bd] flex-shrink-0" />
+                <span className="hidden xl:inline">{isContinuousView ? 'Cuộn trang' : 'Từng mục'}</span>
               </button>
 
               {/* Dark Mode Toggle */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="p-2 w-9 h-9 rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+                className="p-1.5 w-8 h-8 rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
                 title="Chuyển chế độ sáng / tối"
               >
-                {darkMode ? <Sun className="w-4 h-4 text-[#FAEA28]" /> : <Moon className="w-4 h-4 text-slate-600" />}
+                {darkMode ? <Sun className="w-3.5 h-3.5 text-[#FAEA28]" /> : <Moon className="w-3.5 h-3.5 text-slate-600" />}
               </button>
 
               {/* 2-Channel Report Button */}
               <button
                 onClick={onOpenReport}
-                className="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#2076bd] to-[#165b94] hover:from-[#165b94] hover:to-[#0f4370] text-white text-xs font-bold tracking-wide shadow-md shadow-blue-600/20 hover:shadow-lg transition-all cursor-pointer"
+                className="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2076bd] to-[#165b94] hover:from-[#165b94] hover:to-[#0f4370] text-white text-xs font-bold tracking-wide shadow-sm shadow-blue-600/20 hover:shadow-md transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#FAEA28]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#FAEA28] flex-shrink-0" />
                 <span>BẢO VỆ 24/7</span>
               </button>
 
               {/* Mobile Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 lg:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl cursor-pointer"
+                className="p-1.5 lg:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer flex-shrink-0"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
