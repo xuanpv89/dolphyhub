@@ -136,6 +136,7 @@ export function App() {
                   onExploreFlashcards={() => switchTabAndScroll('role')}
                   onWatchVideo={() => switchTabAndScroll('media')}
                   onStartQuiz={() => switchTabAndScroll('media')}
+                  onOpenArticleByNumber={handleOpenArticleByNumber}
                 />
                 <ComparisonSection />
                 <FlashcardsSection />
@@ -202,6 +203,7 @@ export function App() {
               onExploreFlashcards={() => switchTabAndScroll('role')}
               onWatchVideo={() => switchTabAndScroll('media')}
               onStartQuiz={() => switchTabAndScroll('media')}
+              onOpenArticleByNumber={handleOpenArticleByNumber}
             />
             <RoleHub 
               onOpenArticleByNumber={handleOpenArticleByNumber}

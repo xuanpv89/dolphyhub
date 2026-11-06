@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'home', label: 'Trang Chủ', icon: Sparkles },
     { id: 'role', label: 'Góc Vai Trò', icon: Coffee },
     { id: 'chapters', label: '11 Chương', icon: BookOpen },
-    { id: 'matrix', label: 'Tra Cứu & Tình Huống', icon: Search },
+    { id: 'matrix', label: 'Tra Cứu', icon: Search },
     { id: 'media', label: 'Video & Quiz', icon: Film },
     { id: 'support', label: '2 Kênh Hỗ Trợ', icon: ShieldCheck },
   ];
@@ -94,29 +94,29 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Brand Logo & Title */}
           <div 
-            className="flex items-center space-x-3 cursor-pointer select-none" 
+            className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none flex-shrink-0" 
             onClick={() => onSelectTab('home')}
           >
             <img
               src="./images/dolphy-emblem.png"
               alt="Dolphy Logo"
-              className="h-10 w-10 object-contain rounded-full shadow-sm ring-2 ring-[#2076bd]/20"
+              className="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-full shadow-sm ring-2 ring-[#2076bd]/20"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
             <div className="flex flex-col">
-              <span className="font-oswald text-xl sm:text-2xl font-bold tracking-wider text-[#2076bd] dark:text-blue-400 leading-none">
+              <span className="font-oswald text-lg sm:text-2xl font-bold tracking-wider text-[#2076bd] dark:text-blue-400 leading-none">
                 DOLPHY COMPASS
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-0.5">
-                Cẩm Nang Văn Hóa & Nội Quy 2026
+              <span className="text-[9px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-0.5">
+                Cẩm Nang Nội Quy 2026
               </span>
             </div>
           </div>
 
           {/* Desktop Clean Tab Bar */}
-          <nav className="hidden lg:flex items-center space-x-1.5 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+          <nav className="hidden lg:flex items-center space-x-1 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
             {mainTabs.map((t) => {
               const Icon = t.icon;
               const isActive = currentTab === t.id && !isContinuousView;
@@ -124,10 +124,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               return (
                 <button
                   key={t.id}
-                  onClick={() => {
-                    onSelectTab(t.id);
-                  }}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all ${
+                  onClick={() => onSelectTab(t.id)}
+                  className={`flex items-center space-x-1.5 px-2.5 xl:px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all ${
                     isActive
                       ? 'bg-[#2076bd] text-white shadow-md shadow-blue-500/20'
                       : 'text-slate-600 dark:text-slate-300 hover:text-[#2076bd] dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/50'
@@ -141,31 +139,31 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action Tools */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0">
             
-            {/* View Mode Toggle Button (Gọn gàng vs Toàn bộ) */}
+            {/* View Mode Toggle Button */}
             <button
               onClick={() => setIsContinuousView(!isContinuousView)}
-              className={`hidden xl:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+              className={`hidden md:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 isContinuousView
                   ? 'bg-amber-50 dark:bg-amber-950/60 border-amber-300 text-amber-700 dark:text-amber-300'
-                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#2076bd]'
               }`}
               title={isContinuousView ? 'Chuyển sang chế độ duyệt từng mục' : 'Chuyển sang chế độ cuộn toàn bộ trang'}
             >
               <Layers className="w-3.5 h-3.5 text-[#2076bd]" />
-              <span>{isContinuousView ? 'Chế độ: Cuộn 1 Trang' : 'Chế độ: Theo Mục'}</span>
+              <span className="hidden lg:inline">{isContinuousView ? 'Cuộn 1 Trang' : 'Theo Mục'}</span>
             </button>
 
             {/* Quick Search Button */}
             <button
               onClick={onOpenSearch}
-              className="flex items-center space-x-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 hover:border-[#2076bd] hover:text-[#2076bd] transition-all text-xs"
+              className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 hover:border-[#2076bd] hover:text-[#2076bd] transition-all text-xs"
               title="Tìm kiếm điều luật (Ctrl+K)"
             >
               <Search className="w-4 h-4 text-[#2076bd]" />
-              <span className="hidden md:inline font-medium">Tìm nhanh...</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-700 rounded border border-slate-200 dark:border-slate-600 text-slate-400">
+              <span className="hidden sm:inline font-medium">Tìm kiếm</span>
+              <kbd className="hidden sm:inline-block px-1.5 py-0.2 text-[10px] font-mono bg-white dark:bg-slate-700 rounded border border-slate-200 dark:border-slate-600 text-slate-400">
                 ⌘K
               </kbd>
             </button>
@@ -182,10 +180,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* 2-Channel Report Button */}
             <button
               onClick={onOpenReport}
-              className="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#2076bd] to-[#165b94] hover:from-[#165b94] hover:to-[#0f4370] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all"
+              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#2076bd] to-[#165b94] hover:from-[#165b94] hover:to-[#0f4370] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all"
             >
-              <ShieldCheck className="w-4 h-4 text-[#FAEA28]" />
-              <span>PHẢN ÁNH BẢO MẬT</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-[#FAEA28]" />
+              <span>PHẢN ÁNH</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -193,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 lg:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -201,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 animate-fadeIn shadow-xl max-h-[80vh] overflow-y-auto">
+        <div className="xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 animate-fadeIn shadow-xl max-h-[80vh] overflow-y-auto">
           <div className="grid grid-cols-2 gap-2 pt-2">
             {mainTabs.map((t) => {
               const Icon = t.icon;
