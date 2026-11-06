@@ -14,6 +14,7 @@ import { ScenariosSection } from './components/ScenariosSection';
 import { QuizSection } from './components/QuizSection';
 import { WhistleblowerSection } from './components/WhistleblowerSection';
 import { AmbienceAudio } from './components/AmbienceAudio';
+import { MobileBottomDock } from './components/MobileBottomDock';
 import { Footer } from './components/Footer';
 import { ArticleModal } from './components/ArticleModal';
 import { ReportModal } from './components/ReportModal';
@@ -25,6 +26,9 @@ export function App() {
     return localStorage.getItem('dolphy_theme') === 'dark';
   });
 
+  const [currentTab, setCurrentTab] = useState<string>('home');
+  const [isContinuousView, setIsContinuousView] = useState<boolean>(false);
+
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [selectedArticleContext, setSelectedArticleContext] = useState<{
     chapterTitle: string;
@@ -33,7 +37,6 @@ export function App() {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isReportOpen, setIsReportOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('overview');
 
   // Sync dark mode class on <html>
   useEffect(() => {
@@ -78,91 +81,160 @@ export function App() {
   };
 
   const handleSelectMisconduct = (code: string) => {
-    const matrixElem = document.getElementById('matrix');
-    if (matrixElem) {
-      matrixElem.scrollIntoView({ behavior: 'smooth' });
-    }
+    setCurrentTab('matrix');
+    setTimeout(() => {
+      const matrixElem = document.getElementById('matrix');
+      if (matrixElem) {
+        matrixElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const handleSelectScenario = (id: string) => {
-    const scElem = document.getElementById('scenarios');
-    if (scElem) {
-      scElem.scrollIntoView({ behavior: 'smooth' });
-    }
+    setCurrentTab('matrix');
+    setTimeout(() => {
+      const scElem = document.getElementById('scenarios');
+      if (scElem) {
+        scElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
-  const scrollTo = (id: string) => {
-    const elem = document.getElementById(id);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
+  const switchTabAndScroll = (tabId: string) => {
+    setCurrentTab(tabId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f172a] text-[#1e293b] dark:text-[#f8fafc] flex flex-col font-sans transition-colors duration-200">
+    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f172a] text-[#1e293b] dark:text-[#f8fafc] flex flex-col font-sans transition-colors duration-200 pb-16 md:pb-0">
+      
       {/* Top Navbar */}
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenReport={() => setIsReportOpen(true)}
-        activeSection={activeSection}
+        currentTab={currentTab}
+        onSelectTab={switchTabAndScroll}
+        isContinuousView={isContinuousView}
+        setIsContinuousView={setIsContinuousView}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Content Area */}
       <main className="flex-1">
-        {/* 1. Hero Overview */}
-        <HeroBanner
-          onOpenSearch={() => setIsSearchOpen(true)}
-          onExploreChapters={() => scrollTo('chapters')}
-          onExploreRoleHub={() => scrollTo('role-hub')}
-          onExploreFlashcards={() => scrollTo('flashcards')}
-          onWatchVideo={() => scrollTo('videos')}
-          onStartQuiz={() => scrollTo('quiz')}
-        />
+        
+        {/* Render Mode A: Tabbed Clean View (Default - Easy & Focused) */}
+        {!isContinuousView ? (
+          <div className="animate-fadeIn">
+            {/* TAB 1: TRANG CHỦ */}
+            {currentTab === 'home' && (
+              <>
+                <HeroBanner
+                  onOpenSearch={() => setIsSearchOpen(true)}
+                  onExploreChapters={() => switchTabAndScroll('chapters')}
+                  onExploreRoleHub={() => switchTabAndScroll('role')}
+                  onExploreFlashcards={() => switchTabAndScroll('role')}
+                  onWatchVideo={() => switchTabAndScroll('media')}
+                  onStartQuiz={() => switchTabAndScroll('media')}
+                />
+                <ComparisonSection />
+                <FlashcardsSection />
+                <VisualInfographics />
+              </>
+            )}
 
-        {/* 2. Trạm Không Gian 5 Vai Trò (Dedicated Role Hubs) */}
-        <RoleHub 
-          onOpenArticleByNumber={handleOpenArticleByNumber}
-          onExploreFlashcards={() => scrollTo('flashcards')}
-        />
+            {/* TAB 2: GÓC VAI TRÒ CỦA BẠN & CHECKLIST CA */}
+            {currentTab === 'role' && (
+              <div className="pt-20 sm:pt-24 space-y-6">
+                <RoleHub 
+                  onOpenArticleByNumber={handleOpenArticleByNumber}
+                  onExploreFlashcards={() => {
+                    const fc = document.getElementById('flashcards');
+                    if (fc) fc.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                />
+                <InteractiveChecklist />
+                <FlashcardsSection />
+              </div>
+            )}
 
-        {/* 3. Infographic Trực Quan Hóa 4 Nguyên Tắc Cốt Lõi */}
-        <VisualInfographics />
+            {/* TAB 3: 11 CHƯƠNG CẨM NANG & SO SÁNH */}
+            {currentTab === 'chapters' && (
+              <div className="pt-20 sm:pt-24 space-y-6">
+                <ChapterExplorer onSelectArticle={handleSelectArticle} />
+                <ComparisonSection />
+              </div>
+            )}
 
-        {/* 4. Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards) */}
-        <FlashcardsSection />
+            {/* TAB 4: TRA CỨU PHỤ LỤC A & TÌNH HUỐNG THỰC TẾ */}
+            {currentTab === 'matrix' && (
+              <div className="pt-20 sm:pt-24 space-y-6">
+                <MatrixExplorer />
+                <ScenariosSection onOpenArticleByNumber={handleOpenArticleByNumber} />
+              </div>
+            )}
 
-        {/* 5. Sơ Đồ Dòng Chảy Quy Trình (Visual Timelines & Workflows) */}
-        <VisualTimelineFlow />
+            {/* TAB 5: VIDEO 13 NĂM, INFOGRAPHICS, SƠ ĐỒ & QUIZ */}
+            {currentTab === 'media' && (
+              <div className="pt-20 sm:pt-24 space-y-6">
+                <VideoSection />
+                <VisualTimelineFlow />
+                <VisualInfographics />
+                <QuizSection />
+              </div>
+            )}
 
-        {/* 6. Thước Phim 13 Năm & Ảnh Quầy Bar Thực Tế */}
-        <VideoSection />
+            {/* TAB 6: 2 KÊNH TIẾP NHẬN BẢO VỆ (DEC-020) */}
+            {currentTab === 'support' && (
+              <div className="pt-20 sm:pt-24 space-y-6">
+                <WhistleblowerSection onOpenReportModal={() => setIsReportOpen(true)} />
+                <VisualInfographics />
+              </div>
+            )}
+          </div>
+        ) : (
+          /* Render Mode B: Continuous Single Page View (All stacked) */
+          <div className="animate-fadeIn">
+            <HeroBanner
+              onOpenSearch={() => setIsSearchOpen(true)}
+              onExploreChapters={() => switchTabAndScroll('chapters')}
+              onExploreRoleHub={() => switchTabAndScroll('role')}
+              onExploreFlashcards={() => switchTabAndScroll('role')}
+              onWatchVideo={() => switchTabAndScroll('media')}
+              onStartQuiz={() => switchTabAndScroll('media')}
+            />
+            <RoleHub 
+              onOpenArticleByNumber={handleOpenArticleByNumber}
+              onExploreFlashcards={() => {
+                const fc = document.getElementById('flashcards');
+                if (fc) fc.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
+            <VisualInfographics />
+            <FlashcardsSection />
+            <VisualTimelineFlow />
+            <VideoSection />
+            <InteractiveChecklist />
+            <ComparisonSection />
+            <ChapterExplorer onSelectArticle={handleSelectArticle} />
+            <MatrixExplorer />
+            <ScenariosSection onOpenArticleByNumber={handleOpenArticleByNumber} />
+            <QuizSection />
+            <WhistleblowerSection onOpenReportModal={() => setIsReportOpen(true)} />
+          </div>
+        )}
 
-        {/* 7. Checklist Bỏ Túi Mở Ca & Đóng Ca Thực Hành */}
-        <InteractiveChecklist />
-
-        {/* 6. 6 Điểm Đột Phá Mới Của DOL-HR-001 (So sánh Cũ vs 2026) */}
-        <ComparisonSection />
-
-        {/* 7. Chi Tiết 11 Chương Trực Quan (Chế độ Bỏ túi vs Pháp lý) */}
-        <ChapterExplorer onSelectArticle={handleSelectArticle} />
-
-        {/* 8. Tra Cứu Phụ Lục A (Ma Trận 28+ Hành Vi & Chế Tài Tối Đa) */}
-        <MatrixExplorer />
-
-        {/* 9. Tình Huống Thực Tế & Hỏi Đáp Quầy Bar */}
-        <ScenariosSection onOpenArticleByNumber={handleOpenArticleByNumber} />
-
-        {/* 10. Mini Quiz: Đại Sứ Hiểu Luật Dolphy 2026 */}
-        <QuizSection />
-
-        {/* 11. 02 Kênh Tiếp Nhận & Bảo Vệ Độc Lập (DEC-020) */}
-        <WhistleblowerSection onOpenReportModal={() => setIsReportOpen(true)} />
       </main>
 
-      {/* Ambience Audio Floating Button (Tiếng Quán Cà Phê Chill) */}
+      {/* Floating Ambience Sound Button (Coffee Shop Rain Sound) */}
       <AmbienceAudio />
+
+      {/* Mobile Bottom Navigation Dock */}
+      <MobileBottomDock
+        currentTab={currentTab}
+        onSelectTab={switchTabAndScroll}
+        onOpenReport={() => setIsReportOpen(true)}
+      />
 
       {/* Footer */}
       <Footer />

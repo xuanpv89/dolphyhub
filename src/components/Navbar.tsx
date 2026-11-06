@@ -11,8 +11,11 @@ import {
   BookOpen,
   Film,
   Zap,
+  Coffee,
   CheckSquare,
-  Users
+  Layers,
+  HelpCircle,
+  Award
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -20,7 +23,10 @@ interface NavbarProps {
   setDarkMode: (val: boolean) => void;
   onOpenSearch: () => void;
   onOpenReport: () => void;
-  activeSection: string;
+  currentTab: string;
+  onSelectTab: (tab: string) => void;
+  isContinuousView: boolean;
+  setIsContinuousView: (val: boolean) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -28,7 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   setDarkMode,
   onOpenSearch,
   onOpenReport,
-  activeSection,
+  currentTab,
+  onSelectTab,
+  isContinuousView,
+  setIsContinuousView,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -41,27 +50,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { id: 'overview', label: 'Tổng Quan' },
-    { id: 'role-hub', label: '5 Nhánh Vai Trò' },
-    { id: 'infographics', label: 'Infographics' },
-    { id: 'flashcards', label: 'Bí Kíp 3 Giây' },
-    { id: 'timelines', label: 'Sơ Đồ Quy Trình' },
-    { id: 'videos', label: 'Thước Phim & Ảnh' },
-    { id: 'checklist', label: 'Checklist Ca' },
-    { id: 'chapters', label: '11 Chương' },
-    { id: 'matrix', label: 'Phụ Lục A' },
-    { id: 'scenarios', label: 'Tình Huống' },
-    { id: 'quiz', label: 'Mini Quiz' },
+  const mainTabs = [
+    { id: 'home', label: 'Trang Chủ', icon: Sparkles },
+    { id: 'role', label: 'Góc Vai Trò', icon: Coffee },
+    { id: 'chapters', label: '11 Chương', icon: BookOpen },
+    { id: 'matrix', label: 'Tra Cứu & Tình Huống', icon: Search },
+    { id: 'media', label: 'Video & Quiz', icon: Film },
+    { id: 'support', label: '2 Kênh Hỗ Trợ', icon: ShieldCheck },
   ];
-
-  const scrollTo = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <header
@@ -71,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800'
       }`}
     >
-      {/* Top micro bar for corporate identity */}
+      {/* Top Corporate Identity Bar */}
       <div className="bg-[#2076bd] text-white text-[11px] py-1 px-4 font-medium hidden sm:flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <span className="font-bold tracking-wider uppercase">CÔNG TY CỔ PHẦN CÁ HEO XANH (BLUE DOLPHIN)</span>
@@ -92,11 +88,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Main navigation */}
+      {/* Main Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18">
+          
           {/* Brand Logo & Title */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollTo('overview')}>
+          <div 
+            className="flex items-center space-x-3 cursor-pointer select-none" 
+            onClick={() => onSelectTab('home')}
+          >
             <img
               src="./images/dolphy-emblem.png"
               alt="Dolphy Logo"
@@ -115,25 +115,48 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden 2xl:flex items-center space-x-1">
-            {navLinks.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
-                  activeSection === item.id
-                    ? 'text-[#2076bd] bg-blue-50 dark:bg-blue-950/60 font-bold'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-[#2076bd] dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+          {/* Desktop Clean Tab Bar */}
+          <nav className="hidden lg:flex items-center space-x-1.5 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+            {mainTabs.map((t) => {
+              const Icon = t.icon;
+              const isActive = currentTab === t.id && !isContinuousView;
+
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    onSelectTab(t.id);
+                  }}
+                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all ${
+                    isActive
+                      ? 'bg-[#2076bd] text-white shadow-md shadow-blue-500/20'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-[#2076bd] dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/50'
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{t.label}</span>
+                </button>
+              );
+            })}
           </nav>
 
           {/* Action Tools */}
           <div className="flex items-center space-x-2 sm:space-x-3">
+            
+            {/* View Mode Toggle Button (Gọn gàng vs Toàn bộ) */}
+            <button
+              onClick={() => setIsContinuousView(!isContinuousView)}
+              className={`hidden xl:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                isContinuousView
+                  ? 'bg-amber-50 dark:bg-amber-950/60 border-amber-300 text-amber-700 dark:text-amber-300'
+                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+              title={isContinuousView ? 'Chuyển sang chế độ duyệt từng mục' : 'Chuyển sang chế độ cuộn toàn bộ trang'}
+            >
+              <Layers className="w-3.5 h-3.5 text-[#2076bd]" />
+              <span>{isContinuousView ? 'Chế độ: Cuộn 1 Trang' : 'Chế độ: Theo Mục'}</span>
+            </button>
+
             {/* Quick Search Button */}
             <button
               onClick={onOpenSearch}
@@ -162,13 +185,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#2076bd] to-[#165b94] hover:from-[#165b94] hover:to-[#0f4370] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all"
             >
               <ShieldCheck className="w-4 h-4 text-[#FAEA28]" />
-              <span>GỬI PHẢN ÁNH BẢO MẬT</span>
+              <span>PHẢN ÁNH BẢO MẬT</span>
             </button>
 
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 2xl:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
+              className="p-2 lg:hidden text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -178,21 +201,42 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="2xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-xl max-h-[80vh] overflow-y-auto">
-          <div className="grid grid-cols-2 gap-2 pt-2 pb-3">
-            {navLinks.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className={`text-left px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
-                  activeSection === item.id
-                    ? 'bg-blue-50 dark:bg-blue-950 text-[#2076bd] font-bold'
-                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+        <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 animate-fadeIn shadow-xl max-h-[80vh] overflow-y-auto">
+          <div className="grid grid-cols-2 gap-2 pt-2">
+            {mainTabs.map((t) => {
+              const Icon = t.icon;
+              const isActive = currentTab === t.id && !isContinuousView;
+
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onSelectTab(t.id);
+                  }}
+                  className={`flex items-center space-x-2 p-2.5 rounded-xl text-xs font-bold transition-colors ${
+                    isActive
+                      ? 'bg-blue-50 dark:bg-blue-950 text-[#2076bd]'
+                      : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  <Icon className="w-4 h-4 text-[#2076bd]" />
+                  <span>{t.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+            <span>Chế độ cuộn 1 trang:</span>
+            <button
+              onClick={() => setIsContinuousView(!isContinuousView)}
+              className={`px-3 py-1 rounded-lg text-xs font-bold ${
+                isContinuousView ? 'bg-blue-100 text-[#2076bd]' : 'bg-slate-100 text-slate-600'
+              }`}
+            >
+              {isContinuousView ? 'Bật' : 'Tắt'}
+            </button>
           </div>
 
           <button
