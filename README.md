@@ -33,7 +33,18 @@ Hệ thống thiết kế kế thừa trực tiếp từ hệ sinh thái Dolphy 
   - 🏢 **Khối Văn Phòng DHO (Hậu Phương Vững Chắc):** Giờ 8h-17h (T2-T6, 40h/tuần), bảo mật dữ liệu, thủ tục tạm điều chuyển và tính lương OT.
   - 🌱 **Bạn Mới / Newbie (7 Ngày Đầu Tiên Tại Dolphy):** Không phải đóng cọc đào tạo, kèm 1-1 tay nghề Barista, làm quen nhịp ca và an tâm hòa nhập gia đình Cá Heo Xanh.
 
-### 2. ⚡ Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards)
+### 2. 🎨 Infographic Trực Quan Hóa 4 Nguyên Tắc Cốt Lõi
+- **Chuẩn tác phong 5S Quầy bar:** Hướng dẫn trực quan từ mũ/tóc, bảng tên, tạp dề, quần dài đến giày bít mũi chống trượt.
+- **3 Bước dừng máy an toàn khi rò điện:** Ngắt cầu dao -> Cảnh báo đồng đội -> Báo CHT/Kỹ thuật DHO.
+- **Sơ đồ 2 kênh bảo vệ (DEC-020):** Tiếp nhận ẩn danh, xử lý trong 24h, cấm trả đũa.
+- **4 Nguyên tắc bồi thường công bằng:** Cấm đền cả ca, trừ hao mòn khấu hao, trần bồi thường sơ suất, khấu trừ lương tối đa 30%.
+
+### 3. 🗺️ Sơ Đồ Dòng Chảy Quy Trình (Visual Workflows)
+- **Vòng đời ca trực 24h:** Đi đúng giờ -> Họp giao ban đầu ca (tính lương) -> Vận hành & phục vụ -> Nghỉ giữa ca 30-45p có lương -> Đóng ca & vệ sinh phin mù -> Bàn giao CHT & chấm công về.
+- **Lộ trình 14-30 ngày coaching sửa lỗi:** Ghi nhận thiện chí -> Không phạt tiền -> Lập kế hoạch 1-3 hành vi -> Kèm cặp đào tạo -> Tự động xóa kỷ luật sau 3-6 tháng.
+- **4 Bước ứng phó sự cố khẩn cấp:** Cứu người (Ưu tiên 1) -> Báo động & Gọi 114/115 -> Sơ tán & ngắt điện -> Điểm danh & báo cấp trên.
+
+### 4. ⚡ Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards)
 - 6 thẻ bài tương tác lật 2 mặt vui vẻ, hài hước, giải tỏa hoàn toàn áp lực:
   - *Lỡ tay làm rớt bình Cold Brew đắt tiền?* ➡️ Bình tĩnh! Điều 72 cấm chia tiền cả ca đền bù!
   - *Mưa ngập Thảo Điền lỡ muộn ca 20 phút?* ➡️ 0đ tiền phạt! Báo CHT và chấm công giờ thực tế.

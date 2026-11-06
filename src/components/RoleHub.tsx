@@ -30,7 +30,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
       icon: Coffee,
       color: 'from-blue-600 to-cyan-600',
       tagline: 'Tạo tác từng tách cà phê hạnh phúc với tâm thế an tâm 100%',
-      image: './images/diff-slide-1.jpg',
+      image: './images/top-12-baristas.jpg',
       shifts: 'Ca 1: 06:00/07:00 - 14:00 • Ca 2: 14:00 - 21:00/22:00 (Nghỉ giữa ca 30-45p tính vào giờ làm nếu ca >=6h)',
       rights: [
         'Quyền dừng máy pha La Marzocco lập tức khi thấy rò điện/chập cháy mà không sợ bị phạt (Điều 30)',
@@ -52,7 +52,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
       icon: Store,
       color: 'from-amber-600 to-yellow-600',
       tagline: 'Lãnh đạo bằng sự đồng hành, bảo vệ an toàn & truyền lửa cho nhân sự',
-      image: './images/28-thao-dien-1.webp',
+      image: './images/store-31-thao-dien-facade.jpg',
       shifts: 'Linh hoạt theo giờ vận hành chi nhánh • Lập & công bố lịch trước ít nhất 07 ngày',
       rights: [
         'Thẩm quyền điều phối nhân sự, xếp ca gãy linh hoạt để bảo đảm phục vụ',
@@ -73,7 +73,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
       icon: BadgeCheck,
       color: 'from-emerald-600 to-teal-700',
       tagline: 'Người gác cổng chuẩn mực hạt cà phê mộc & quy chuẩn an toàn thực phẩm',
-      image: './images/diff-slide-2.jpg',
+      image: './images/knowledge-phin-brewing-guide.jpg',
       shifts: 'Theo lịch kiểm chuẩn chi nhánh & xưởng rang • Giám sát đột xuất',
       rights: [
         'Thẩm quyền niêm phong, yêu cầu thu hồi hoặc tiêu hủy lô nguyên liệu không đạt chuẩn',
@@ -94,7 +94,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
       icon: Building2,
       color: 'from-indigo-600 to-purple-700',
       tagline: 'Kiến tạo chính sách, bảo vệ dữ liệu & hỗ trợ tối đa cho khối cửa hàng',
-      image: './images/tran-luu-1.webp',
+      image: './images/retail-beans-bakery-display.jpg',
       shifts: '08:00 - 12:00 & 13:00 - 17:00 (Thứ 2 đến Thứ 6, tổng 40 giờ/tuần cơ sở)',
       rights: [
         'Hưởng trọn vẹn ngày nghỉ thứ Bảy & Chủ Nhật và các ngày nghỉ lễ Tết hưởng nguyên lương',
@@ -115,7 +115,7 @@ export const RoleHub: React.FC<RoleHubProps> = ({ onOpenArticleByNumber, onExplo
       icon: Sprout,
       color: 'from-teal-500 to-emerald-600',
       tagline: 'Chào bạn mới gia nhập gia đình Cá Heo Xanh! Mọi thứ đều rất dễ thương và an toàn!',
-      image: './images/hero-slide-1.jpg',
+      image: './images/mobile-coffee-school-event.jpg',
       shifts: 'Làm quen nhịp ca, kèm 1-1 cùng Trainer & Barista đàn anh',
       rights: [
         'KHÔNG PHẢI ĐÓNG CỌC ĐÀO TẠO: Bãi bỏ toàn bộ tiền cọc và không giữ bằng cấp/CCCD gốc',

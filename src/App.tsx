@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroBanner } from './components/HeroBanner';
 import { RoleHub } from './components/RoleHub';
+import { VisualInfographics } from './components/VisualInfographics';
 import { FlashcardsSection } from './components/FlashcardsSection';
+import { VisualTimelineFlow } from './components/VisualTimelineFlow';
 import { VideoSection } from './components/VideoSection';
 import { InteractiveChecklist } from './components/InteractiveChecklist';
 import { ComparisonSection } from './components/ComparisonSection';
@@ -125,13 +127,19 @@ export function App() {
           onExploreFlashcards={() => scrollTo('flashcards')}
         />
 
-        {/* 3. Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards) */}
+        {/* 3. Infographic Trực Quan Hóa 4 Nguyên Tắc Cốt Lõi */}
+        <VisualInfographics />
+
+        {/* 4. Bí Kíp Bỏ Túi 3 Giây (Fun & Cheerful Flip Flashcards) */}
         <FlashcardsSection />
 
-        {/* 4. Thước Phim 13 Năm & Ảnh Quầy Bar Thực Tế */}
+        {/* 5. Sơ Đồ Dòng Chảy Quy Trình (Visual Timelines & Workflows) */}
+        <VisualTimelineFlow />
+
+        {/* 6. Thước Phim 13 Năm & Ảnh Quầy Bar Thực Tế */}
         <VideoSection />
 
-        {/* 5. Checklist Bỏ Túi Mở Ca & Đóng Ca Thực Hành */}
+        {/* 7. Checklist Bỏ Túi Mở Ca & Đóng Ca Thực Hành */}
         <InteractiveChecklist />
 
         {/* 6. 6 Điểm Đột Phá Mới Của DOL-HR-001 (So sánh Cũ vs 2026) */}

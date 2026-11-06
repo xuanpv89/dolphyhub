@@ -44,10 +44,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'overview', label: 'Tổng Quan' },
     { id: 'role-hub', label: '5 Nhánh Vai Trò' },
+    { id: 'infographics', label: 'Infographics' },
     { id: 'flashcards', label: 'Bí Kíp 3 Giây' },
+    { id: 'timelines', label: 'Sơ Đồ Quy Trình' },
     { id: 'videos', label: 'Thước Phim & Ảnh' },
     { id: 'checklist', label: 'Checklist Ca' },
-    { id: 'comparison', label: 'Điểm Mới' },
     { id: 'chapters', label: '11 Chương' },
     { id: 'matrix', label: 'Phụ Lục A' },
     { id: 'scenarios', label: 'Tình Huống' },
