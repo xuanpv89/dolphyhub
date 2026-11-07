@@ -9,6 +9,17 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: './',
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-icons': ['lucide-react'],
+        }
+      }
+    }
+  },
   server: {
     port: 3000,
     open: true
